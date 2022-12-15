@@ -18,3 +18,7 @@ VScode 安装的插件包括 vetur、还有 prettier,打开 Format On Save 设�
 ## 1.4-使用 vue-cli 创建一个 vue 项目
 
 终端执行'vue create + 项目名称'即可创建，选择项目需要的相关内容后，即可创建项目
+
+## 1.5-预览创建的 vue 项目
+
+使用'yarn serve'即可在 localhost：8080 上预览项目
