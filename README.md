@@ -1,24 +1,13 @@
-# vue-p
+# 组件基础
 
-this a vue lesson
+启动一个全新的 vue 项目，项目参考为https://github.com/ninghao/ninghao-vue.git，这里我们从start这个远程分支创建初始项目。
 
-## 1.1-准备工作
+## 2.1-准备项目
 
-准备，nodejs,git,npm,yarn,VScode
+拷贝 starter 分支下的相关文件到项目目录下。
 
-## 1.2-安装插件
+### 初始化项目
 
-VScode 安装的插件包括 vetur、还有 prettier,打开 Format On Save 设置
-添加.prettierrc.json 文件，在文件中设置'singleQuote:true','trailingCommna:all'
-
-## 1.3-安装 Vue-cli
-
-使用 yarn 全局安装 Vue-cli,执行'npm install @vue/cli --global'
-
-## 1.4-使用 vue-cli 创建一个 vue 项目
-
-终端执行'vue create + 项目名称'即可创建，选择项目需要的相关内容后，即可创建项目
-
-## 1.5-预览创建的 vue 项目
-
-使用'yarn serve'即可在 localhost：8080 上预览项目
+```
+yarn install
+```
