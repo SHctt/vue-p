@@ -5,6 +5,10 @@
       <textarea v-model="content"></textarea>
       <span> -> {{ content }} </span>
     </div>
+    <div>
+      <input id="check" type="checkbox" v-model="checked" />
+      <label for="check">->Checked:{{ checked }}</label>
+    </div>
   </div>
 </template>
 
@@ -14,6 +18,7 @@ export default {
     return {
       name: 'Vue.js前端应用#3:forms表单元素',
       content: '初始文本',
+      checked: true,
     };
   },
 };

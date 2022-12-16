@@ -6,6 +6,10 @@
 
 添加一个文本框，并使用`v-model`，将文本框被输入的内容实时显示在组件上
 
-## 3.2
+## 3.2 `textarea`多行文本区域
 
 添加一组`textarea`多行文本区域，同样也可以使用`v-model`，将输入的内容实时显示在组件上
+
+## 3.3 复选框 checkbox
+
+添加一个 `checkbox`，并为之添加一个 `label`。要使点击 `label` 也可以切换状态，需要在 `label` 上添加`for`等于`checkbox`的`id`
