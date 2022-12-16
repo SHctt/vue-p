@@ -22,6 +22,17 @@
       </label>
       <span>{{ tags }}</span>
     </div>
+    <div>
+      <h4>-----单选按钮-----</h4>
+      <span>选择性别</span>
+      <label for="sex-male">
+        <input type="radio" id="sex-male" v-model="sex" value="男" />男
+      </label>
+      <label for="sex-famale">
+        <input type="radio" id="sex-famale" v-model="sex" value="女" />女
+      </label>
+      <div>性别是：{{ sex }}</div>
+    </div>
   </div>
 </template>
 
@@ -33,6 +44,7 @@ export default {
       content: '初始文本',
       checked: true,
       tags: [],
+      sex: '男',
     };
   },
 };
