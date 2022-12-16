@@ -5,11 +5,13 @@
     <app-button />
     <AppButton></AppButton>
     <app-button></app-button>
+    <app-demo-button></app-demo-button>
   </div>
 </template>
 
 <script>
 import AppButton from './component/app-button.vue';
+import AppDemoButton from './component/app-demo-button.vue';
 
 export default {
   data() {
@@ -20,6 +22,7 @@ export default {
 
   components: {
     AppButton,
+    AppDemoButton,
   },
 };
 </script>
