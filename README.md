@@ -21,3 +21,7 @@
 ## 3.5 单选按钮
 
 定义`sex`代表性别数据，`v-model`等于`sex`的单选按钮中，按钮被选中，`value`的值将会被传递给`sex`
+
+## 3.6 select:下拉菜单
+
+将`select`中`option`的`value`值，传递给`v-model`

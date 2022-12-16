@@ -33,6 +33,16 @@
       </label>
       <div>性别是：{{ sex }}</div>
     </div>
+    <div>
+      <h4>-----select:下拉菜单-----</h4>
+      <select v-model="category">
+        <option value="">-选择分类-</option>
+        <option value="蔬菜">蔬菜</option>
+        <option value="水果">水果</option>
+        <option value="肉类">肉类</option>
+      </select>
+      <div>喜欢的食物是：{{ category }}</div>
+    </div>
   </div>
 </template>
 
@@ -45,6 +55,7 @@ export default {
       checked: true,
       tags: [],
       sex: '男',
+      category: '',
     };
   },
 };
