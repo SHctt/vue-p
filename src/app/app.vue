@@ -1,7 +1,7 @@
 <template>
   <div>
     <h3>{{ name }}</h3>
-    <AppButton />
+    <AppButton text="确定" />
     <app-button />
     <AppButton></AppButton>
     <app-button></app-button>
