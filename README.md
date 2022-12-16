@@ -75,3 +75,13 @@ v-for 使用时，必须定义一个`:key`的值，这里的 key 必须为唯一
 ## 2.9 v-if:按条件显示内容
 
 在元素上定义`v-if`的值，值的`true`或者`false`决定了是否在页面上添加这个元素
+
+## 2.10 绑定 :class
+
+```
+<div :class="{ active: showOrHide }"></div>
+```
+
+以上 div 元素中，使用`:class`对`active`这个类做了一个绑定。在元素上，是否使用这个类，取决于`showOrHide`的值是`true`还是`false`
+
+本节的实例，演示了一种展示导航菜单列表的方法，并会使用绑定 class 的方式，展示当前被激活的菜单

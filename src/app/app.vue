@@ -14,6 +14,18 @@
     <button @click="showOrHide = !showOrHide">
       {{ showOrHide ? '隐藏内容' : '显示内容' }}
     </button>
+    <h5>------以下演示绑定class------</h5>
+    <div class="menu">
+      <div
+        v-for="(item, index) in menuItem"
+        :key="index"
+        @click="currentItem = index"
+        class="menu-item"
+        :class="{ active: currentItem === index }"
+      >
+        {{ item }}
+      </div>
+    </div>
   </div>
 </template>
 
@@ -23,7 +35,9 @@ export default {
     return {
       name: '2.9 v-if:按条件显示内容',
       dat: '当前状态',
-      showOrHide: false,
+      showOrHide: true,
+      menuItem: ['首页', '关于我们', '产品展示'],
+      currentItem: 0,
       postList: [
         {
           id: 1,
@@ -77,5 +91,12 @@ export default {
 <style>
 button {
   margin: 4px;
+}
+.menu {
+  display: flex;
+  gap: 16px;
+}
+.active {
+  color: blueviolet;
 }
 </style>
