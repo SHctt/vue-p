@@ -2,7 +2,7 @@
   <div>
     <h3>{{ name }}</h3>
     <div>
-      <input type="text" v-model="content" />
+      <textarea v-model="content"></textarea>
       <span> -> {{ content }} </span>
     </div>
   </div>
