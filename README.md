@@ -12,3 +12,13 @@ SFC: 在 Vue 应用里，一个组件可以是一个单独的文件，这种组�
 <AppButton></AppButton>//成组的写法，中间可以包装一些东西
 <app-button></app-button>
 ```
+
+## 4.2 组件的样式
+
+可以在组件中直接导入样式文件
+
+```
+<style>
+@import './button.css';
+</style>
+```
