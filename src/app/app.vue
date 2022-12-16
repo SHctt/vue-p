@@ -55,6 +55,11 @@
       <input type="text" :value="title" @input="title = $event.target.value" />
       <span> -> {{ title }} </span>
     </div>
+    <div>
+      <h4>-----v-model.lazy指令的效果-----</h4>
+      <input type="text" v-model.lazy="title" />
+      <span> -> {{ title }} </span>
+    </div>
   </div>
 </template>
 
