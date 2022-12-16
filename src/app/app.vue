@@ -66,6 +66,11 @@
       <input type="text" v-model.number="count" @change="onChangeCount" />
       <span> -> {{ count }} </span>
     </div>
+    <div>
+      <h4>-----v-model.trim指令的效果-----</h4>
+      <input type="text" v-model.trim="titleTrim" @change="onChangeTitleTrim" />
+      <span> -> {{ titleTrim }} </span>
+    </div>
   </div>
 </template>
 
@@ -81,11 +86,13 @@ export default {
       sex: '男',
       category: '',
       count: 0,
+      titleTrim: '   123456   ',
     };
   },
 
   created() {
-    this.onChangeCount(this.count);
+    this.onChangeCount();
+    this.onChangeTitleTrim();
   },
 
   methods: {
@@ -106,6 +113,10 @@ export default {
 
     onChangeCount() {
       console.log(`count此时的数据类型为：${typeof this.count}`);
+    },
+
+    onChangeTitleTrim() {
+      console.log(`此时文本的长度为： ${this.titleTrim.length}`);
     },
   },
 };
