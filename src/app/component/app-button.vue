@@ -1,5 +1,7 @@
 <template>
-  <button class="button" @click="$emit('tap', text)">{{ text }}</button>
+  <button class="button" @click="$emit('tap', text)">
+    <slot></slot>
+  </button>
 </template>
 
 <script>
@@ -9,8 +11,6 @@ export default {
       type: String,
       default: '按钮',
     },
-    taped: { type: String, default: '被点击了' },
-    creat: { type: String, default: '创建成功' },
   },
 
   created() {

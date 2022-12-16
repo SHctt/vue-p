@@ -46,3 +46,7 @@ SFC: 在 Vue 应用里，一个组件可以是一个单独的文件，这种组�
 在`AppButton`这个子组件中,在这个按钮上用定义了一个`click`事件，这个点击事件促发一个自定义的事件，这里用`$emit()`自定义一个子组件的事件，`$emit('tap',text)`可以添加参数，第一个参数是自定义事件的名字,这里是`tap`，第二个参数的意思是传递 父组件上 text 的值。另外，在这个子组件中，可以定义`created()`方法，就时在这个元素被创建后，发生的事件，这里也可以使用`this.$emit('init')`，自定义一个名叫`init`的事件。
 
 `App`作为父组件，调用了`AppButton`,因此，在这个组件上，可以使用`@tap="onTapAppButton"`和`@init="onInitAppButton"`的方式，监听这两个事件，当子组件的这两个事件发生时，将会促发`methods:`方法中的，`onTapAppButton`和`onInitAppButton`这两个函数
+
+## 4.6 slot：在 Vue 组件里用插槽分发内容
+
+在 button 组件里可以使用一组 slot 添加内容插槽，这样就可以把按钮文字放在组件的开始与结束之间
