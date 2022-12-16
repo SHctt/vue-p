@@ -1,6 +1,10 @@
 <template>
   <div>
     <h3>{{ name }}</h3>
+    <div>
+      <input type="text" v-model="content" />
+      <span> -> {{ content }} </span>
+    </div>
   </div>
 </template>
 
@@ -9,6 +13,7 @@ export default {
   data() {
     return {
       name: 'Vue.js前端应用#3:forms表单元素',
+      content: '初始文本',
     };
   },
 };
