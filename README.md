@@ -56,3 +56,18 @@ ps:在数据的侦听方法中，第一个参数是变化后的值，一开始�
 写法说明：`v-on:click` 等效于 `@click`
 
 `v-on`的深度用法示例参考：https://cn.vuejs.org/guide/essentials/event-handling.html
+
+## 2.8 v-for:在 vue 组件里显示内容的列表
+
+先准备一个数据列表，一般这个数据列表都是来自服务端，这里我们将这个列表数组直接添加在 data 中演示
+
+```
+<div v-for="(post,index) in postList" :key="index">
+      {{ post.id }}-{{ post.content }}- <small> {{ post.author }} </small>
+    </div>
+```
+
+`post`:是为在`postList`这个数组列表中的项目定义的名字
+`index`:将`postList`数组列表的序号定义为`index`
+
+v-for 使用时，必须定义一个`:key`的值，这里的 key 必须为唯一值，这里我们可以使用`index`,当然`post`数据本身也有一个`id`属性，本来也是唯一值。也可以被当作`:key`
