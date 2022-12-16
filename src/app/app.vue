@@ -8,7 +8,7 @@
     </div>
     <div>
       <h4>-----多行文本框-----</h4>
-      <textarea v-model="content" @input="onInputMethods"></textarea>
+      <textarea v-model="content" @change="onChangeMethods"></textarea>
       <span> -> {{ content }} </span>
     </div>
     <div>
@@ -42,7 +42,7 @@
     </div>
     <div>
       <h4>-----select:下拉菜单-----</h4>
-      <select v-model="category" @input="onInputMethods">
+      <select v-model="category" @change="onChangeMethods">
         <option value="">-选择分类-</option>
         <option value="蔬菜">蔬菜</option>
         <option value="水果">水果</option>
@@ -70,6 +70,10 @@ export default {
   methods: {
     onInputMethods(event) {
       console.log(event);
+    },
+
+    onChangeMethods(event) {
+      console.log(event.target.value);
     },
   },
 };
