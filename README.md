@@ -11,3 +11,12 @@
 ```
 yarn install
 ```
+
+## 2.2-创建 vue 应用实例
+
+main.ts 入口文件
+app/app.vue 根组件（主组件）
+
+```
+yarn serve
+```
