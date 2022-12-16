@@ -8,7 +8,7 @@
     </div>
     <div>
       <h4>-----多行文本框-----</h4>
-      <textarea v-model="content" @change="onChangeMethods"></textarea>
+      <textarea v-model="content" @keyup.enter="onKeyupMotheds"></textarea>
       <span> -> {{ content }} </span>
     </div>
     <div>
@@ -74,6 +74,13 @@ export default {
 
     onChangeMethods(event) {
       console.log(event.target.value);
+    },
+
+    onKeyupMotheds(event) {
+      console.log(
+        '按了enter',
+        // event.key === 'Enter' ? `按了enter` : `按的按键是${event.key}`,
+      );
     },
   },
 };
