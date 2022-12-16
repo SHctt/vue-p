@@ -60,6 +60,12 @@
       <input type="text" v-model.lazy="title" />
       <span> -> {{ title }} </span>
     </div>
+    <div>
+      <h4>-----v-model.number指令的效果-----</h4>
+      <!-- <input type="text" v-model="count" @change="onChangeCount" /> -->
+      <input type="text" v-model.number="count" @change="onChangeCount" />
+      <span> -> {{ count }} </span>
+    </div>
   </div>
 </template>
 
@@ -74,7 +80,12 @@ export default {
       tags: [],
       sex: '男',
       category: '',
+      count: 0,
     };
+  },
+
+  created() {
+    this.onChangeCount(this.count);
   },
 
   methods: {
@@ -91,6 +102,10 @@ export default {
         '按了enter',
         // event.key === 'Enter' ? `按了enter` : `按的按键是${event.key}`,
       );
+    },
+
+    onChangeCount() {
+      console.log(`count此时的数据类型为：${typeof this.count}`);
     },
   },
 };
