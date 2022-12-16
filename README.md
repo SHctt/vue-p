@@ -13,3 +13,7 @@
 ## 3.3 复选框 checkbox
 
 添加一个 `checkbox`，并为之添加一个 `label`。要使点击 `label` 也可以切换状态，需要在 `label` 上添加`for`等于`checkbox`的`id`
+
+## 3.4 多值复选框
+
+定义一个`tags`的空的数组，收集所有`v-model`是`tags`的复选框中`value`的值。

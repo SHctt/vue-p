@@ -9,6 +9,19 @@
       <input id="check" type="checkbox" v-model="checked" />
       <label for="check">->Checked:{{ checked }}</label>
     </div>
+    <div>
+      <h4>-----多值复选框-----</h4>
+      <label for="tag-1">
+        <input type="checkbox" id="tag-1" v-model="tags" value="霍茵" />霍茵
+      </label>
+      <label for="tag-2">
+        <input type="checkbox" id="tag-2" v-model="tags" value="小楚" />小楚
+      </label>
+      <label for="tag-3">
+        <input type="checkbox" id="tag-3" v-model="tags" value="糖糖" />糖糖
+      </label>
+      <span>{{ tags }}</span>
+    </div>
   </div>
 </template>
 
@@ -19,6 +32,7 @@ export default {
       name: 'Vue.js前端应用#3:forms表单元素',
       content: '初始文本',
       checked: true,
+      tags: [],
     };
   },
 };
