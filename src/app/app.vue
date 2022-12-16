@@ -2,11 +2,18 @@
   <div>
     <h3>{{ name }}</h3>
     {{ processStatus }}
+    <h5>------以下演示v-on组件的事件处理------</h5>
     <button @click="setName">点击重置标题</button>
     <button @click="resetName">点击变换标题</button>
+    <h5>------以下演示v-for显示内容列表------</h5>
     <div v-for="(post, index) in postList" :key="index">
       {{ post.id }}-{{ post.content }}- <small> {{ post.author }} </small>
     </div>
+    <h5>------以下演示v-if按条件显示内容------</h5>
+    <div v-if="showOrHide">按条件显示的内容元素</div>
+    <button @click="showOrHide = !showOrHide">
+      {{ showOrHide ? '隐藏内容' : '显示内容' }}
+    </button>
   </div>
 </template>
 
@@ -14,8 +21,9 @@
 export default {
   data() {
     return {
-      name: '2.8 v-for:在 vue 组件里显示内容的列表',
+      name: '2.9 v-if:按条件显示内容',
       dat: '当前状态',
+      showOrHide: false,
       postList: [
         {
           id: 1,
