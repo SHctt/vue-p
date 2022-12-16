@@ -25,3 +25,11 @@
 ## 3.6 select:下拉菜单
 
 将`select`中`option`的`value`值，传递给`v-model`
+
+---
+
+## input 事件：元素的值发生变化时，发生的事情
+
+在 input，textarea，或者 select 这些表单元素上，可以绑定元素的 input 事件，元素的值发生变化的时候就会触发这个事件，你可以绑定这个事件，然后设置一下在这种事件发生的时候要做的事情
+
+本节的 input，textarea，或者 select 这些表单元素上，都绑定了输出`event`到控制台上的 input 事件，观察控制台上的输出，可以看到相关事件信息

@@ -3,12 +3,12 @@
     <h3>{{ name }}</h3>
     <div>
       <h4>-----text单行文本框-----</h4>
-      <input type="text" v-model="title" />
+      <input type="text" v-model="title" @input="onInputMethods" />
       <span> -> {{ title }} </span>
     </div>
     <div>
       <h4>-----多行文本框-----</h4>
-      <textarea v-model="content"></textarea>
+      <textarea v-model="content" @input="onInputMethods"></textarea>
       <span> -> {{ content }} </span>
     </div>
     <div>
@@ -42,7 +42,7 @@
     </div>
     <div>
       <h4>-----select:下拉菜单-----</h4>
-      <select v-model="category">
+      <select v-model="category" @input="onInputMethods">
         <option value="">-选择分类-</option>
         <option value="蔬菜">蔬菜</option>
         <option value="水果">水果</option>
@@ -65,6 +65,12 @@ export default {
       sex: '男',
       category: '',
     };
+  },
+
+  methods: {
+    onInputMethods(event) {
+      console.log(event);
+    },
   },
 };
 </script>
