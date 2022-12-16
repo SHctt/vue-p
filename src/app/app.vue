@@ -89,14 +89,5 @@ export default {
 </script>
 
 <style>
-button {
-  margin: 4px;
-}
-.menu {
-  display: flex;
-  gap: 16px;
-}
-.active {
-  color: blueviolet;
-}
+@import './styles/app.css';
 </style>
