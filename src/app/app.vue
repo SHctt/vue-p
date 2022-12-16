@@ -2,10 +2,17 @@
   <div>
     <h3>{{ name }}</h3>
     <div>
+      <h4>-----text单行文本框-----</h4>
+      <input type="text" v-model="title" />
+      <span> -> {{ title }} </span>
+    </div>
+    <div>
+      <h4>-----多行文本框-----</h4>
       <textarea v-model="content"></textarea>
       <span> -> {{ content }} </span>
     </div>
     <div>
+      <h4>-----复选框-----</h4>
       <input id="check" type="checkbox" v-model="checked" />
       <label for="check">->Checked:{{ checked }}</label>
     </div>
@@ -51,6 +58,7 @@ export default {
   data() {
     return {
       name: 'Vue.js前端应用#3:forms表单元素',
+      title: 'text',
       content: '初始文本',
       checked: true,
       tags: [],
