@@ -2,6 +2,8 @@
   <div>
     <h3>{{ name }}</h3>
     {{ processStatus }}
+    <button @click="setName">点击重置标题</button>
+    <button @click="resetName">点击变换标题</button>
   </div>
 </template>
 
@@ -12,6 +14,15 @@ export default {
       name: '2.6-watch 属性：vue组件里的数据监视器',
       dat: '当前状态',
     };
+  },
+
+  methods: {
+    setName() {
+      this.name = '重置标题';
+    },
+    resetName() {
+      this.name = '2.7 v-on:处理vue组件里发生的事情（事件处理）';
+    },
   },
 
   created() {
@@ -34,3 +45,9 @@ export default {
   },
 };
 </script>
+
+<style>
+button {
+  margin: 4px;
+}
+</style>
