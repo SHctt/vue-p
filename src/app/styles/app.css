@@ -10,3 +10,34 @@ select {
 label {
   margin-left: 4px;
 }
+
+.page {
+  padding: 32px;
+}
+
+.page-header {
+  display: flex;
+  align-items: center;
+  border-bottom: 1px #e1e1e1;
+}
+
+.brand {
+  margin-right: 32px;
+}
+
+.menu-item {
+  display: inline-block;
+  text-decoration: none;
+  color: #585858;
+  margin: 8px;
+  padding: 8px 16px;
+}
+
+.page-body {
+  margin: 24px 0;
+}
+.router-link-active {
+  color: #585858;
+  background: #eeeeee;
+  border-radius: 5px;
+}
