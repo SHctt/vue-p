@@ -1,32 +1,43 @@
 <template>
   <div>
     <h3>{{ name }}</h3>
-    <AppButton text="确定" @tap="onTapAppButton" @init="onInitAppButton"
-      >提交</AppButton
-    >
+    <component :is="userComponent"></component>
+    <small @click="onClickHintText">{{ hintText }}</small>
   </div>
 </template>
 
 <script>
-import AppButton from './component/app-button.vue';
+import UserProfile from './component/UserProfile.vue';
+import UserLogin from './component/UserLogin.vue';
+import UserRegister from './component/UserRegister.vue';
 export default {
   data() {
     return {
       name: 'Vue.js 前端应用 #4 components',
+      userComponent: 'UserLogin',
+      hintText: '还没有账户，点击注册',
     };
   },
 
   methods: {
-    onTapAppButton(text) {
-      console.log('监听到子组件的tap事件', text);
-    },
-    onInitAppButton() {
-      console.log('监听到子组件的init事件');
+    onClickHintText() {
+      switch (this.userComponent) {
+        case 'UserRegister':
+          this.userComponent = 'UserLogin';
+          this.hintText = '还没有账户，点击注册';
+          break;
+        case 'UserLogin':
+          this.userComponent = 'UserRegister';
+          this.hintText = '已有账户，点击登陆';
+          break;
+      }
     },
   },
 
   components: {
-    AppButton,
+    UserProfile,
+    UserLogin,
+    UserRegister,
   },
 };
 </script>
