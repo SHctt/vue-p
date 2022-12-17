@@ -1,46 +1,22 @@
 <template>
   <div>
     <h3>{{ name }}</h3>
-    <keep-alive>
-      <component :is="userComponent"></component>
-    </keep-alive>
-    <small @click="onClickHintText">{{ hintText }}</small>
+    <app-input v-model="username" />
+    <span>输入的文字是{{ username }}</span>
   </div>
 </template>
 
 <script>
-import UserProfile from './component/UserProfile.vue';
-import UserLogin from './component/UserLogin.vue';
-import UserRegister from './component/UserRegister.vue';
+import AppInput from './component/app-input.vue';
 export default {
   data() {
     return {
       name: 'Vue.js 前端应用 #4 components',
-      userComponent: 'UserLogin',
-      hintText: '还没有账户，点击注册',
+      username: '',
     };
   },
 
-  methods: {
-    onClickHintText() {
-      switch (this.userComponent) {
-        case 'UserRegister':
-          this.userComponent = 'UserLogin';
-          this.hintText = '还没有账户，点击注册';
-          break;
-        case 'UserLogin':
-          this.userComponent = 'UserRegister';
-          this.hintText = '已有账户，点击登陆';
-          break;
-      }
-    },
-  },
-
-  components: {
-    UserProfile,
-    UserLogin,
-    UserRegister,
-  },
+  components: { AppInput },
 };
 </script>
 

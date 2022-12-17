@@ -71,3 +71,13 @@ SFC: 在 Vue 应用里，一个组件可以是一个单独的文件，这种组�
 
 例如：在这个 UserLogin 组件里面，有一个文本框，我希望在组件被挂载以后，让这个文本框元素自动进入焦点状态。可以这样，在这个 html 元素上面，用 ref 给它分配一个引用的 id ，名字可以随便定义，比如 username 。我们在组件添加`mounted`的生命周期方法，让这个组件被挂载后，就在控制台输出`$refs`包含的内容；
 同时，添加`this.$refs.username.focus()`,调用文本框元素的`focus()`,让文本框进入焦点状态
+
+## 4.10 在自定义组件上使用 v-model
+
+在自定义的组件上使用 v-model 相当于给这个组件绑定了一个叫 modelValue 的属性，然后监听了一下这个组件的 update:modelValue 这个事件，发生这个事件的时候，会设置 给 modelValue 设置的那个数据的值，会让它等于 $event。
+
+所以，如果你想在自定义的组件上使用 v-model，需要再去处理一下这个自定义的组件。 添加一组 script ，默认导出一个对象，里面添加一个 props ，它的值是可以是一个对象，里面是这个组件支持的一些属性，这里要添加一个叫 modelValue 的属性，属性的值的类型是 String.
+
+然后在组件模板里用的这个 input 元素上面，要绑定一个 value 属性，它的值就是 modelValue 的值。 然后再监听一下元素的 input 事件，发生这种事件的时候，触发一个自定义的事件，$emit ，事件的名字叫 update:modelValue ，对应的值设置成 $event.target.value，也就是当前这个文本框的值。
+
+之后，在组件上添加`v-model="username"`,就会实时更新了
