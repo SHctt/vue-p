@@ -1,7 +1,9 @@
 <template>
   <div>
     <h3>{{ name }}</h3>
-    <component :is="userComponent"></component>
+    <keep-alive>
+      <component :is="userComponent"></component>
+    </keep-alive>
     <small @click="onClickHintText">{{ hintText }}</small>
   </div>
 </template>
