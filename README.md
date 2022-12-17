@@ -17,3 +17,11 @@ package.json ，在 dependencies 里面,添加 vue-router，这里使用^4.0.0-0
 在 Vue 应用的组件里使用 router-link 可以添加路由链接 ，打开 App 组件，在这个组件的模板里面，找个地方可以添加两个路由链接，用的是 router-link ，链接文字是 首页，具体的链接可以用 router-link 的 to 属性设置一下，比如 / 表示应用的根。
 
 router-link 添加的路由链接，在项目编译后，其实就是`<a>`标记的元素，我们可以通过 css，来给页面添加样式
+
+## 5.4 用代码切换路由地址（$router.push 与 $router.replace）
+
+除了用 router-link 创建的路由链接打开路由地址以外，我们也可以在 Vue 组件里使用代码的方式切换路由地址。
+
+例如：这里将 index 组件上的这个文字标签添加`@click`事件，在这个事件里，我们可以使用`this.$router.replace('/about')`或者`this.$router.push('/about')`这样的方式，让点击这个文字的时候，将路由地址切换成`/about`
+
+这两个方法类似，区别在于 push 方法会添加新的浏览历史，但是 replace 方法会替换掉当前的这个浏览历史。
