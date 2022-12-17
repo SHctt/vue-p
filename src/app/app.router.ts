@@ -8,10 +8,16 @@ const routes: Array<RouteRecordRaw> = [
     path: '/',
     component: Index,
   },
-  // {
-  //   path: '/about',
-  //   component: About,
-  // },
+  {
+    name: 'aboutUs',
+    path: '/about-us',
+    // redirect: '/about',
+    // redirect: { name: 'about' },
+    redirect: (to) => {
+      console.log(to);
+      return '/about';
+    },
+  },
   {
     name: 'about',
     path: '/about',
