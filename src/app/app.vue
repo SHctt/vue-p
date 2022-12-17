@@ -10,6 +10,9 @@
         <router-link class="menu-item" :to="{ name: 'about' }"
           >关于我们</router-link
         >
+        <router-link class="menu-item" :to="{ name: 'postIndex' }"
+          >bolg</router-link
+        >
       </div>
     </div>
     <div class="page-body">
