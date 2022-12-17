@@ -4,7 +4,10 @@
       <h3 class="brand">{{ name }}</h3>
       <div class="menu">
         <router-link class="menu-item" to="/">首页</router-link>
-        <router-link class="menu-item" to="/about">关于我们</router-link>
+        <!-- <router-link class="menu-item" to="/about">关于我们</router-link> -->
+        <router-link class="menu-item" :to="{ name: 'about' }"
+          >关于我们</router-link
+        >
       </div>
     </div>
     <div class="page-body">
