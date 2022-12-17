@@ -1,16 +1,39 @@
 <template>
   <div>
-    <div>用户登陆</div>
-    <input type="text" ref="userName" />
-    <input type="text" />
+    <div>用户登录 {{ username }}</div>
+    <AppInput v-model="username" />
   </div>
 </template>
 
 <script>
+import AppInput from './app-input.vue';
 export default {
-  mounted() {
-    console.log(this.$refs);
-    this.$refs.userName.focus();
+  data() {
+    return {
+      username: '',
+    };
   },
+  beforeCreate() {
+    console.log('user login before create');
+  },
+  created() {
+    console.log('user login created');
+  },
+  beforeMount() {
+    console.log('user login before mount');
+  },
+  mounted() {
+    console.log('user login mounted');
+  },
+  beforeUpdate() {
+    console.log('user login before update');
+  },
+  updated() {
+    console.log('user login updated');
+  },
+  unmounted() {
+    console.log('user login unmounted');
+  },
+  components: { AppInput },
 };
 </script>
