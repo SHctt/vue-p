@@ -41,3 +41,7 @@ export default {
 ## 6.4 Mutations：修改器
 
 如果你想修改 Store 里的数据，也就是 Store 里的 state ，必须要通过一种叫 Mutation 的东西。
+
+## 6.5 mapMutations
+
+使用 mapMutations 这个帮手方法可以把 store 里的 mutation 映射成组件里的一个方法。

@@ -9,7 +9,7 @@
 </template>
 
 <script>
-import { mapState, mapGetters } from 'vuex';
+import { mapState, mapGetters, mapMutations } from 'vuex';
 export default {
   computed: {
     nameApp() {
@@ -26,11 +26,14 @@ export default {
   methods: {
     mutationData() {
       if (this.$store.state.name !== 'mutations') {
-        this.$store.commit('setName', '使用mutations改变了name的值');
+        // this.$store.commit('setName', '使用mutations改变了name的值');
+        this.setName('使用mutations改变了name的值');
       } else {
-        this.$store.commit('setName', 'mutations');
+        // this.$store.commit('setName', 'mutations');
+        this.setName('这里导入了store中定义的mutations定义的方法');
       }
     },
+    ...mapMutations(['setName']),
   },
 };
 </script>
