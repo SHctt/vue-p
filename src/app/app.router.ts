@@ -30,4 +30,18 @@ const routes: Array<RouteRecordRaw> = [
 // 创建路由
 const router = createRouter({ history: createWebHistory(), routes });
 
+/**
+ * 导航守卫
+ */
+// router.beforeEach((to, from, next) => {
+//   console.log('现在开始导航守卫');
+//   console.log('现在要去的路由地址是', to);
+//   console.log('出发的路由地址是', from);
+
+//   if (to.name === 'postIndex') {
+//     next('/post-popular');
+//   }
+//   next();
+// });
+
 export default router;

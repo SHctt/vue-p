@@ -71,3 +71,26 @@ Vue 应用的路由可以在不同的模块里定义，然后在应用的路由�
 在路由中，把 props 的值设置为 true 时，就可以在路由定义的 component 中，添加一个 props 属性，来自定义动态路由的参数值，例如：演示中这里的 postId，可以在 PostShow 组件中设置一个 props，props 中可以包含一个 postId 属性，类型是 string；
 
 另外，如果将 props 的值设置为一个对象，在对象中包含一个属性，那么这个属性，如果把这个属性在组件中，也设置为一个 props，例如这里定义了一个新的路由，路径是 post-popular，定义了 props 后，同样是访问这个 postShow 这个组件，但是，post-popular 可以显示这个 sort 的值
+
+## 导航守卫（Navigation Guards）
+
+导航守卫，可以检查获取到用户要访问的那个路由，还有用户来自哪里。
+比如用户访问个人档案页面的时候，你可以在守卫里判断当前用户是不是已经登录了，如果还没登录，可以把用户重定向到登录页面。这些导航守卫你可以你可以安排在应用的全局，也可以在某个具体的路由里，还可以放在某个路由组件里。
+
+```
+router.beforeEach((to, from, next) => {
+  console.log('👮');
+  console.log('to: ', to);
+  console.log('from:', from);
+
+  if (to.name === 'postIndex') {
+    next('/');
+  } else {
+    next();
+  }
+});
+```
+
+`router.beforeEach()`这个方法，就是定义一个导航守卫函数的方法。这个方法里面有一个参数，这个参数就是导航守卫函数；
+
+一般的导航守卫函数，有三个参数，to，from 还有 next。这个 to 参数的值是用户要访问的路由，from 是用户来自哪个路由，next 是一个函数，在导航守卫里要执行这个函数，才能完成导航。
