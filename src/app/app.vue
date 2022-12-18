@@ -8,7 +8,7 @@
 export default {
   data() {
     return {
-      name: '空白的vue项目',
+      name: 'Vue.js 前端应用 #6：数据管理',
     };
   },
 };
