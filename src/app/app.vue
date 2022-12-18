@@ -1,5 +1,6 @@
 <template>
   <div>
+    <span v-if="loading">loading</span>
     <h3>{{ name }}</h3>
     {{ appName }}
     <small>{{ nameApp }}</small>
@@ -16,7 +17,7 @@ export default {
       // 在不使用mapStated的情况下，导入state里面的数据
       return this.$store.state.name;
     },
-    ...mapState(['name']), //直接使用state里面的数据名称导入
+    ...mapState(['name', 'loading']), //直接使用state里面的数据名称导入
 
     ...mapState({ appName: 'name' }), //重命名state里面的数据名称
 

@@ -57,3 +57,23 @@ export default {
 派发执行 Store 里的动作可以使用 dispatch 这个方法。在 Vue 应用的组件里我们可以把在 Store 里定义的 Action 映射成组件的方法。
 
 这里需要用到 vuex 提供的一个帮手方法，叫 mapActions，把它从 vuex 里面导入进来。 然后在组件的 methods 属性里面，可以展开执行 mapActions 返回的东西，可以给它提供一个数组参数或者对象参数，如果是对象参数的话需要设置一下在组件里的方法的名字，比如 getName，它的值就是在 Store 里定义的 Action 的名字，这里就是 getName。
+
+## 6.8 动作的 Context 参数
+
+在 Vue Store 里定义的动作都支持一个 Context 参数，我们可以检查一下它里面都有什么，在这个 getName 动作里，可以在控制台上输出它的 context 参数。
+
+回到浏览器，在控制台上会输出动作里的 context 参数，你会发现，它里面有 commit 方法，用这个方法可以 commit store 里的 mutation 去修改 store 里的数据。
+
+这里还有一个 dispatch 方法，在动作里可以用这个方法派发 store 里的动作，也就是你可以在一个动作里派发 store 里的其它的动作。
+
+getters 是当前这个 store 里的获取器，这里有个叫 name 的 getter。 下面还有一个 rootGetters，你可以在这里找到 store 里所有的 getter。因为在 store 里可以配置使用模块，每个 store 模块里都可以有自己的 state，getters 这些东西。
+
+这个 rootState 是所有 store 里的 state， 最后这个 state 是当前这个 store 里的 state。
+
+在 action 里面，如果你只想使用 context 里的某些东西，可以直接把它解构出来，给它一个对象，在这个 action 里需要用的只有 commit 。
+
+这样我们就可以在这个 action 里，直接使用 commit 这个方法了。
+
+## 6.9 实践：加载状态
+
+在 Vue Store 的动作里经常会包含一些异步的动作，也就是执行动作以后不能马上得到需要数据，等待的时候可以在界面上显示一个加载状态，成功得到了数据以后，再去掉加载状态，显示真正的内容。

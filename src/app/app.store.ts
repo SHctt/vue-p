@@ -4,6 +4,7 @@ import { createStore } from 'vuex';
 const store = createStore({
   state: {
     name: '',
+    loading: false,
   },
 
   getters: {
@@ -16,14 +17,22 @@ const store = createStore({
     setName(state, data) {
       state.name = data;
     },
+    setLoading(state, data) {
+      state.loading = data;
+    },
   },
 
   actions: {
     getName(context) {
-      const nameInActions = '在Actions中定义获取name的值的方法';
+      context.commit('setLoading', true);
+      setTimeout(() => {
+        const nameInActions = '在Actions中定义获取name的值的方法';
 
-      // 调用mutations中定义的setName
-      context.commit('setName', nameInActions);
+        // 调用mutations中定义的setName
+        context.commit('setName', nameInActions);
+        context.commit('setLoading', false);
+        console.log(context);
+      }, 2000);
     },
   },
 });
