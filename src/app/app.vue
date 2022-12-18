@@ -1,17 +1,11 @@
 <template>
   <div>
-    <h3>{{ name }}</h3>
+    <h3>{{ $store.state.name }}</h3>
   </div>
 </template>
 
 <script>
-export default {
-  data() {
-    return {
-      name: 'Vue.js 前端应用 #6：数据管理',
-    };
-  },
-};
+export default {};
 </script>
 
 <style>
