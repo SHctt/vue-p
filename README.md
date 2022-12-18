@@ -65,3 +65,9 @@ Vue 应用的路由可以在不同的模块里定义，然后在应用的路由�
     ],
   },
 ```
+
+## 5.10 给路由组件传递属性
+
+在路由中，把 props 的值设置为 true 时，就可以在路由定义的 component 中，添加一个 props 属性，来自定义动态路由的参数值，例如：演示中这里的 postId，可以在 PostShow 组件中设置一个 props，props 中可以包含一个 postId 属性，类型是 string；
+
+另外，如果将 props 的值设置为一个对象，在对象中包含一个属性，那么这个属性，如果把这个属性在组件中，也设置为一个 props，例如这里定义了一个新的路由，路径是 post-popular，定义了 props 后，同样是访问这个 postShow 这个组件，但是，post-popular 可以显示这个 sort 的值

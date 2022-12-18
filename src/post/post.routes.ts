@@ -10,9 +10,17 @@ const routes: Array<RouteRecordRaw> = [
     component: postIndex,
   },
   {
+    path: '/post-popular',
+    component: postIndex,
+    props: {
+      sort: 'popular',
+    },
+  },
+  {
     name: 'postShow',
     path: '/posts/:postId',
     component: postShow,
+    props: true,
     children: [
       {
         path: 'meta',
