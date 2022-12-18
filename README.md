@@ -51,3 +51,9 @@ export default {
 在 Vue 的 Store 里，你可以定义一些 Action 去处理应用的数据，比如从服务端接口那里请求获取数据，或者把数据发送给服务端应用的接口。在 Action 里你可以 commit Store 里的 mutaiton 去修改 Store 里的 state ，就是 Store 里的数据。
 
 也就是如果你的应用需要请求服务端接口获取到一些数据，你可以先在 Store 里添加一个表示这个数据的 state，然后再定义一个修改这个 state 用的 mutation ，再定义一个获取数据用的 action，在这个 action 里面请求接口得到了数据以后，可以用 mutation 来修改 store 里的 state。这样你在组件里就可以使用请求回来的数据了。
+
+## 6.7 mapActions
+
+派发执行 Store 里的动作可以使用 dispatch 这个方法。在 Vue 应用的组件里我们可以把在 Store 里定义的 Action 映射成组件的方法。
+
+这里需要用到 vuex 提供的一个帮手方法，叫 mapActions，把它从 vuex 里面导入进来。 然后在组件的 methods 属性里面，可以展开执行 mapActions 返回的东西，可以给它提供一个数组参数或者对象参数，如果是对象参数的话需要设置一下在组件里的方法的名字，比如 getName，它的值就是在 Store 里定义的 Action 的名字，这里就是 getName。

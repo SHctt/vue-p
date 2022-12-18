@@ -9,7 +9,7 @@
 </template>
 
 <script>
-import { mapState, mapGetters, mapMutations } from 'vuex';
+import { mapState, mapGetters, mapMutations, mapActions } from 'vuex';
 export default {
   computed: {
     nameApp() {
@@ -34,11 +34,15 @@ export default {
       }
     },
     ...mapMutations(['setName']),
+    ...mapActions(['getName']),
   },
 
   created() {
     // 使用$store自带的dispatch方法，调用actions
-    this.$store.dispatch('getName');
+    // this.$store.dispatch('getName');
+
+    // 直接调用mapActions部署的动作
+    this.getName();
   },
 };
 </script>
