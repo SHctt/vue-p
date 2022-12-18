@@ -31,3 +31,9 @@ export default {
 };
 </script>
 ```
+
+## 6.3 Getters：获取器 与 mapGetters
+
+在 Getters 里面，你可以根据 Store 里面已有的数据，做一些加工处理，再让它返回新的数据。在这个 Store 里面，我们可以定义一个获取器，先添加一个 getters 属性，要定义的获取器可以放在这个属性里面。
+
+然后使用 mapGetters 部署到组件中
