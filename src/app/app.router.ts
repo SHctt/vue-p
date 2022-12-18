@@ -24,6 +24,9 @@ const routes: Array<RouteRecordRaw> = [
     name: 'about',
     path: '/about',
     component: About,
+    meta: {
+      requireAuth: true,
+    },
   },
 ];
 
@@ -43,5 +46,12 @@ const router = createRouter({ history: createWebHistory(), routes });
 //   }
 //   next();
 // });
+router.beforeEach((to, from, next) => {
+  const reqAuth = to.matched.some((record) => record.meta.requireAuth);
+  if (reqAuth) {
+    console.log('测试meta验证');
+  }
+  next();
+});
 
 export default router;
