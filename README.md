@@ -45,3 +45,9 @@ export default {
 ## 6.5 mapMutations
 
 使用 mapMutations 这个帮手方法可以把 store 里的 mutation 映射成组件里的一个方法。
+
+## 6.6 Actions：动作
+
+在 Vue 的 Store 里，你可以定义一些 Action 去处理应用的数据，比如从服务端接口那里请求获取数据，或者把数据发送给服务端应用的接口。在 Action 里你可以 commit Store 里的 mutaiton 去修改 Store 里的 state ，就是 Store 里的数据。
+
+也就是如果你的应用需要请求服务端接口获取到一些数据，你可以先在 Store 里添加一个表示这个数据的 state，然后再定义一个修改这个 state 用的 mutation ，再定义一个获取数据用的 action，在这个 action 里面请求接口得到了数据以后，可以用 mutation 来修改 store 里的 state。这样你在组件里就可以使用请求回来的数据了。

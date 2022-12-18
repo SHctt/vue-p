@@ -35,6 +35,11 @@ export default {
     },
     ...mapMutations(['setName']),
   },
+
+  created() {
+    // 使用$store自带的dispatch方法，调用actions
+    this.$store.dispatch('getName');
+  },
 };
 </script>
 
