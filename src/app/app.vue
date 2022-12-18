@@ -4,6 +4,7 @@
     {{ appName }}
     <small>{{ nameApp }}</small>
     <h3>{{ newName }}</h3>
+    <button @click="mutationData">触发mutations</button>
   </div>
 </template>
 
@@ -20,6 +21,16 @@ export default {
     ...mapState({ appName: 'name' }), //重命名state里面的数据名称
 
     ...mapGetters(['newName']),
+  },
+
+  methods: {
+    mutationData() {
+      if (this.$store.state.name !== 'mutations') {
+        this.$store.commit('setName', '使用mutations改变了name的值');
+      } else {
+        this.$store.commit('setName', 'mutations');
+      }
+    },
   },
 };
 </script>
