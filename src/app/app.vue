@@ -6,7 +6,9 @@
         <div class="card-subtitle">Transition_Animation</div>
       </div>
       <div class="card-content">
-        <div :class="['emoji', { pulse: !isActive }]">😍</div>
+        <transition>
+          <div v-if="isActive" class="emoji">🌵</div>
+        </transition>
       </div>
       <div class="card-action">
         <button :class="{ active: isActive }" @click="isActive = !isActive">
@@ -25,7 +27,7 @@ export default {
   data() {
     return {
       name: 'Vue.js 前端应用 #7：过渡和动画',
-      isActive: false,
+      isActive: true,
     };
   },
 };
