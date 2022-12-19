@@ -36,8 +36,20 @@
   padding: 10px 24px;
   cursor: pointer;
   margin: 4px;
+  border-radius: 4px;
 }
 
-.card-action.button:active {
+.card-action > button:active {
   opacity: 0.8;
+}
+
+.card-action > button.active {
+  background: purple;
+  color: #fff;
+  border-radius: 4px;
+}
+
+.status {
+  text-align: center;
+  margin: 24px;
 }

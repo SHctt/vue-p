@@ -6,11 +6,16 @@
         <div class="card-subtitle">Transition_Animation</div>
       </div>
       <div class="card-content">
-        <div :class="['emoji', { hidden: !isActive }]">😊</div>
+        <div :class="['emoji', { pulse: !isActive }]">😍</div>
       </div>
       <div class="card-action">
-        <button @click="isActive = !isActive">请按这里</button>
+        <button :class="{ active: isActive }" @click="isActive = !isActive">
+          请按这里
+        </button>
       </div>
+    </div>
+    <div class="status">
+      <small>isActive:{{ isActive }}</small>
     </div>
   </div>
 </template>
@@ -20,7 +25,7 @@ export default {
   data() {
     return {
       name: 'Vue.js 前端应用 #7：过渡和动画',
-      isActive: true,
+      isActive: false,
     };
   },
 };
