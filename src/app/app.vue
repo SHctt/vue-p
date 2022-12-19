@@ -10,8 +10,9 @@
           name="custom-classes"
           leave-active-class="animate__animated animate__heartBeat"
           enter-active-class="animate__animated animate__tada"
+          mode="out-in"
         >
-          <div v-if="isActive" class="emoji">😂</div>
+          <component :is="currentEmoji"></component>
         </transition>
       </div>
       <div class="card-action">
@@ -27,12 +28,26 @@
 </template>
 
 <script>
+import GhostEmoji from './components/ghost-emoji.vue';
+import RobotEmoji from './components/robot-emoji.vue';
 export default {
   data() {
     return {
       name: 'Vue.js 前端应用 #7：过渡和动画',
       isActive: true,
+      emoji: 'GhostEmoji',
     };
+  },
+
+  computed: {
+    currentEmoji() {
+      return this.isActive ? 'RobotEmoji' : 'GhostEmoji';
+    },
+  },
+
+  components: {
+    GhostEmoji,
+    RobotEmoji,
   },
 };
 </script>
