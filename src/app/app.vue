@@ -6,7 +6,11 @@
         <div class="card-subtitle">Transition_Animation</div>
       </div>
       <div class="card-content">
-        <transition name="pulse">
+        <transition
+          name="custom-classes"
+          leave-active-class="animate__animated animate__heartBeat"
+          enter-active-class="animate__animated animate__tada"
+        >
           <div v-if="isActive" class="emoji">😂</div>
         </transition>
       </div>
@@ -36,4 +40,5 @@ export default {
 <style>
 @import './styles/app.css';
 @import './styles/card.css';
+@import './styles/animate.css';
 </style>

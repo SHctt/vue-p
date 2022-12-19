@@ -32,3 +32,15 @@ vi-if 指令可以，可以决定界面上是否显示某个元素，但是在 v
 ## 7.6 transition：进入与离开动画
 
 元素或者组件进入还有离开的时候，除了可以使用 css 的过渡，也可以使用 css 动画。
+
+## 7.7 使用第三方提供的动画效果-animate.css
+
+可以在这个地址
+https://github.com/animate-css/animate.css/blob/main/animate.css
+将这个第三方的动画效果库复制到项目中，
+
+可以在这个地址
+https://animate.style/
+去预览动画的效果
+
+注意使用的命名格式
