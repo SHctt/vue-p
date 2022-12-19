@@ -6,18 +6,10 @@
         <div class="card-subtitle">Transition_Animation</div>
       </div>
       <div class="card-content">
-        <transition-group
-          name="listChange"
-          leave-active-class="animate__animated animate__backOutDown"
-        >
-          <div class="emoji" v-for="emoji in emojiList" :key="emoji">
-            {{ emoji }}
-          </div>
-        </transition-group>
+        <div class="emoji">{{ animatedNumber }}</div>
       </div>
       <div class="card-action">
-        <button :class="{ active: isActive }" @click="shuffle">打乱顺序</button>
-        <button :class="{ active: isActive }" @click="pop">移除一个</button>
+        <button :class="{ active: isActive }" @click="number += 10">+10</button>
       </div>
     </div>
     <div class="status">
@@ -28,12 +20,15 @@
 
 <script>
 import _ from 'lodash';
+import gsap from 'gsap';
 export default {
   data() {
     return {
       name: 'Vue.js 前端应用 #7：过渡和动画',
       isActive: true,
       emojiList: ['🎄', '❄️', '🚢'],
+      number: 0,
+      tweenedNumber: 0,
     };
   },
   methods: {
@@ -42,6 +37,19 @@ export default {
     },
     pop() {
       this.emojiList.pop();
+    },
+  },
+  computed: {
+    animatedNumber() {
+      return this.tweenedNumber.toFixed(0);
+    },
+  },
+  watch: {
+    number(newValue) {
+      gsap.to(this.$data, {
+        duration: 0.5,
+        tweenedNumber: newValue,
+      });
     },
   },
 };
