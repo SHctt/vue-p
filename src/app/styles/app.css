@@ -31,6 +31,14 @@ label {
   animation-duration: 1s;
   animation-iteration-count: infinite;
 }
+.pulse-enter-active {
+  animation: pulse;
+  animation-duration: 1s;
+}
+.pulse-leave-active {
+  animation: pulse;
+  animation-duration: 1s;
+}
 
 @keyframes pulse {
   from {
