@@ -24,3 +24,7 @@ vi-if 指令可以，可以决定界面上是否显示某个元素，但是在 v
 例如：这里用到 vue 提供的 transition 组件
 当使用一组 transition 标签包裹住含有 v-if 指令的元素后，元素在被移除的过程中，会添加 v-leave-active 和 v-leave-to 的类。当元素出现或者说进入的过程中，元素会添加 v-enter-active 和 v-enter-to 的类；
 因此，我们可以通过对定义这些类来实现过渡的效果
+
+## 7.5 transition：指定过渡效果的名字
+
+可以在 transition 标签上，定义一个 name 属性，这样过度效果过程中的 v-leave...或 v-enter...会变成自定义名字前缀的类名；

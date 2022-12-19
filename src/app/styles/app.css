@@ -56,3 +56,27 @@ label {
 .v-leave-from {
   opacity: 1;
 }
+
+.slide-enter-to {
+  opacity: 1;
+}
+.slide-enter-active {
+  transition: 0.5s;
+}
+.slide-enter-from {
+  opacity: 0;
+  transform: translateX(-30px);
+}
+
+.slide-leave-to {
+  opacity: 0;
+  transform: translateX(30px);
+}
+
+.slide-leave-active {
+  transition: 0.5s;
+}
+
+.slide-leave-from {
+  opacity: 1;
+}
