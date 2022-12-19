@@ -6,6 +6,8 @@
     <small>{{ nameApp }}</small>
     <h3>{{ newName }}</h3>
     <button @click="mutationData">触发mutations</button>
+    <!-- user作为模块被导入主路由，其中包含了user.store中定义的所有方法 -->
+    <div>{{ user.currentUser }}</div>
   </div>
 </template>
 
@@ -17,7 +19,7 @@ export default {
       // 在不使用mapStated的情况下，导入state里面的数据
       return this.$store.state.name;
     },
-    ...mapState(['name', 'loading']), //直接使用state里面的数据名称导入
+    ...mapState(['name', 'loading', 'user']), //直接这里的user代表的是RootState里面的数据名称导入
 
     ...mapState({ appName: 'name' }), //重命名state里面的数据名称
 
@@ -35,7 +37,7 @@ export default {
       }
     },
     ...mapMutations(['setName']),
-    ...mapActions(['getName']),
+    ...mapActions({ getName: 'getName', getUserName: 'getUserName' }),
   },
 
   created() {
@@ -44,6 +46,7 @@ export default {
 
     // 直接调用mapActions部署的动作
     this.getName();
+    this.getUserName();
   },
 };
 </script>
