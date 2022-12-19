@@ -7,7 +7,7 @@
     <h3>{{ newName }}</h3>
     <button @click="mutationData">触发mutations</button>
     <!-- user作为模块被导入主路由，其中包含了user.store中定义的所有方法 -->
-    <div>{{ user.currentUser }}</div>
+    <div>{{ currentUser }}</div>
   </div>
 </template>
 
@@ -23,7 +23,10 @@ export default {
 
     ...mapState({ appName: 'name' }), //重命名state里面的数据名称
 
-    ...mapGetters(['newName']),
+    ...mapGetters({
+      newName: 'newName',
+      currentUser: 'user/returnCurrentUser',
+    }),
   },
 
   methods: {
@@ -37,7 +40,7 @@ export default {
       }
     },
     ...mapMutations(['setName']),
-    ...mapActions({ getName: 'getName', getUserName: 'getUserName' }),
+    ...mapActions({ getName: 'getName', getUserName: 'user/getUserName' }),
   },
 
   created() {

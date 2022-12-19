@@ -8,14 +8,23 @@ export interface UserState {
 
 // 创建模块，模块包含UserState和 RootState这两个数据类型
 const store: Module<UserState, RootState> = {
+  namespaced: true,
   state: {
     currentUser: '',
   },
+
+  getters: {
+    returnCurrentUser(state) {
+      return `输出${state.currentUser}`;
+    },
+  },
+
   mutations: {
     setUserName(state, data) {
       state.currentUser = data;
     },
   },
+
   actions: {
     getUserName(context) {
       const user = 'yum';

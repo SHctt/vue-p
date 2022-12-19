@@ -81,3 +81,9 @@ getters 是当前这个 store 里的获取器，这里有个叫 name 的 getter�
 ## 6.10 modules：Vuex Store 模块
 
 Vuex 提供的模块功能，可以让我们把应用的 Store 分割成不同的 Store 模块。也就是我们不需要把所有的东西全部放在一个 Store 里面，可以根据应用的需求去创建各自的 Store 模块。每个 Store 模块都可以有自己的 state，mutations，还有 actions 这些东西。
+
+## 6.11 namespaced：Vuex Store 模块的命名空间
+
+在创建 Vuex Store 模块的时候可以设置一下让这个模块使用命名空间。打开 user 这个 store 模块，里面可以添加一个 namespaced 把它的值设置成 true，表示要使用命名空间。
+
+使用 命名空间 可以让我们在创建组件时，快速知道，组件中使用的各种数据及方法，到底是来自那个路由模块
