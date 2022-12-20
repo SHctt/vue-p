@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h3>{{ name }}</h3>
+    <h3>{{ title }}</h3>
   </div>
 </template>
 
@@ -8,7 +8,7 @@
 export default {
   data() {
     return {
-      name: '空白的vue项目',
+      title: '前端应用 #9：请求接口',
     };
   },
 };
