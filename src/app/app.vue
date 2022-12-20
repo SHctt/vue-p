@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h3 @click="title = '理解 Vue 的反应系统'">
+    <h3 @click="title = 'Composition API：组合式接口'">
       {{ title }}
     </h3>
   </div>
@@ -8,14 +8,11 @@
 
 <script>
 export default {
-  data() {
+  setup() {
+    const title = 'Vue.js 前端应用 #8： 反应系统';
     return {
-      title: 'Vue.js 前端应用 #8： 反应系统',
+      title,
     };
-  },
-
-  created() {
-    console.log(this.$data);
   },
 };
 </script>
