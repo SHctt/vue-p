@@ -26,7 +26,7 @@
 </template>
 
 <script>
-import { reactive, ref, toRefs } from 'vue';
+import { reactive, ref, toRefs, onMounted, onBeforeMount } from 'vue';
 export default {
   setup() {
     const title = ref('Vue.js 前端应用 #8： 反应系统');
@@ -46,6 +46,15 @@ export default {
       // 在这里，一定用指定，设定的值是这个反应特性对象的value属性
       userName.value = '这个点击事件，使用了组合式接口中定义的方法';
     };
+
+    // 生命周期
+    onBeforeMount(() => {
+      console.log('准备挂载');
+    });
+
+    onMounted(() => {
+      console.log('组件已被挂载');
+    });
 
     return {
       title,
