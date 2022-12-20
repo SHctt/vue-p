@@ -26,7 +26,7 @@
 </template>
 
 <script>
-import { reactive, ref, toRefs, onMounted, onBeforeMount } from 'vue';
+import { reactive, ref, toRefs, onMounted, onBeforeMount, watch } from 'vue';
 export default {
   setup() {
     const title = ref('Vue.js 前端应用 #8： 反应系统');
@@ -54,6 +54,11 @@ export default {
 
     onMounted(() => {
       console.log('组件已被挂载');
+    });
+
+    // watch监视数据变化
+    watch(userName, (newUserName, oldUserName) => {
+      console.log(`数据从 ${oldUserName} 变成了 ${newUserName}`);
     });
 
     return {
