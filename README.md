@@ -70,3 +70,9 @@ Vue 3 里面添加了一种新的创建 Vue 组件的方法，就是使用 Compo
 在用 Options API 创建的组件里，添加这些计算属性可以在组件里添加一个 computed ，然后在它里面定义组件需要的计算属性。
 
 使用 Composition API 创建的组件，要定义计算属性可以这样，先在 vue 里面，导入 computed 这个方法。
+
+# 组合式 API 的其他使用方式
+
+组合式的 API,可以提供，更加灵活的组件创建方式，同时也可以参考`<script setup>`https://cn.vuejs.org/api/sfc-script-setup.html
+
+这样的方式来进行更简洁的编程
