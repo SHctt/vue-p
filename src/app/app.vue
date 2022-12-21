@@ -19,6 +19,11 @@ export default {
       title: '前端应用 #9：请求接口',
       postsList: [],
       errorMessage: '',
+      user: {
+        name: '张三',
+        password: '123123',
+      },
+      token: '',
     };
   },
 
@@ -27,6 +32,15 @@ export default {
       const response = await appPostsClient.get('/posts');
       this.postsList = response.data;
       // console.log(appPostsClient);
+    } catch (error) {
+      this.errorMessage = error.message;
+    }
+
+    //login的post请求
+    try {
+      const response = await appPostsClient.post('/login', this.user);
+      this.token = response.data.token;
+      console.log(response.data);
     } catch (error) {
       this.errorMessage = error.message;
     }
