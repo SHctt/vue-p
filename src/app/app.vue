@@ -24,7 +24,14 @@ export default {
 
   async created() {
     try {
-      const response = await axios.get('http://localhost:3001/posts');
+      const response = await axios({
+        method: 'get',
+        url: '/posts',
+        baseURL: 'http://localhost:3001',
+        // headers: {
+        //   'X-Custom:': 'hello~',
+        // },
+      });
       this.postsList = response.data;
     } catch (error) {
       this.errorMessage = error.message;

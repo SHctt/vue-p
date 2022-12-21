@@ -36,3 +36,9 @@ yarn add axios
 ## 9.3 使用 async await 处理 axios 请求
 
 将 created 方法标记为 async 函数，在这个方法中，用 try 尝试获取 response 的数据，catch 到 error，就返回错误信息
+
+## 9.4 axios 请求的配置
+
+在使用这个 axios 上面提供的方法发送 http 请求的时候，可能需要做一些额外的配置，比如在请求里包含特定的头部数据，设置一下要求的响应数据的类型等等。
+
+这里展示了 axios 的另外一种写法
