@@ -7,6 +7,7 @@
         {{ post.content }} --- {{ post.user.name }}
       </div>
     </div>
+    <div>{{ errorMessage }}</div>
   </div>
 </template>
 
@@ -17,14 +18,24 @@ export default {
     return {
       title: '前端应用 #9：请求接口',
       postsList: [],
+      errorMessage: '',
     };
   },
 
   created() {
-    axios.get('http://localhost:3001/posts').then((response) => {
-      this.postsList = response.data;
-      console.log(this.postsList);
-    });
+    axios
+      .get('http://localhost:3001/posts1')
+      .then((response) => {
+        this.postsList = response.data;
+        // console.log(response);
+      })
+      .catch((error) => {
+        // console.log(error.message);
+        // console.log(error.response);
+        if (error.response.status === 404) {
+          this.errorMessage = '数据连接失败，错误的接口地址';
+        }
+      });
   },
 };
 </script>
