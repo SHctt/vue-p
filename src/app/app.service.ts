@@ -1,7 +1,5 @@
 import axios from 'axios';
 
-axios.defaults.baseURL = 'http://localhost:3001';
-
 // 请求拦截器
 axios.interceptors.request.use(
   (config) => {
@@ -24,4 +22,6 @@ axios.interceptors.response.use(
   },
 );
 
-export { axios };
+export const appPostsClient = axios.create({
+  baseURL: 'http://localhost:3001',
+});

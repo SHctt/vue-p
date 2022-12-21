@@ -12,7 +12,7 @@
 </template>
 
 <script>
-import { axios } from '@/app/app.service';
+import { appPostsClient } from '@/app/app.service';
 export default {
   data() {
     return {
@@ -24,9 +24,9 @@ export default {
 
   async created() {
     try {
-      const response = await axios.get('/posts');
+      const response = await appPostsClient.get('/posts');
       this.postsList = response.data;
-      // console.log(axios.defaults);
+      // console.log(appPostsClient);
     } catch (error) {
       this.errorMessage = error.message;
     }
