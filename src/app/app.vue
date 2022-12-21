@@ -26,7 +26,7 @@ export default {
     try {
       const response = await axios.get('/posts');
       this.postsList = response.data;
-      console.log(axios.defaults);
+      // console.log(axios.defaults);
     } catch (error) {
       this.errorMessage = error.message;
     }
