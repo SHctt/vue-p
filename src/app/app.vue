@@ -22,20 +22,13 @@ export default {
     };
   },
 
-  created() {
-    axios
-      .get('http://localhost:3001/posts1')
-      .then((response) => {
-        this.postsList = response.data;
-        // console.log(response);
-      })
-      .catch((error) => {
-        // console.log(error.message);
-        // console.log(error.response);
-        if (error.response.status === 404) {
-          this.errorMessage = '数据连接失败，错误的接口地址';
-        }
-      });
+  async created() {
+    try {
+      const response = await axios.get('http://localhost:3001/posts');
+      this.postsList = response.data;
+    } catch (error) {
+      this.errorMessage = error.message;
+    }
   },
 };
 </script>

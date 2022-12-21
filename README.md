@@ -32,3 +32,7 @@ yarn add axios
 这种在发送请求的时候出现的错误，你可能希望在应用里处理一下，也就是你的应用需要对这些错误情况做出不同的反应。比如给用户一个提示。
 
 使用 axios 发送 http 请求会得到一个 Promise，成功兑现了这个承诺会执行 then 里提供的回调，如果发生了错误，会执行 catch 里的回调。所以这里可以再给它加上一个 catch。 提供一个回调参数，一个 error 参数，这里可以在控制台上输出 error 里的 message ，还有 error 里的 resposne。
+
+## 9.3 使用 async await 处理 axios 请求
+
+将 created 方法标记为 async 函数，在这个方法中，用 try 尝试获取 response 的数据，catch 到 error，就返回错误信息
