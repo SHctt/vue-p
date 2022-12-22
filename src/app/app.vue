@@ -27,7 +27,7 @@ import { appPostsClient } from '@/app/app.service';
 export default {
   data() {
     return {
-      projectTitle: '前端应用 #9：请求接口',
+      projectTitle: 'Vue.js 前端应用 #10：身份验证',
       postsList: [],
       errorMessage: '',
       user: {
