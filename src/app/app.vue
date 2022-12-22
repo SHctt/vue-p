@@ -1,15 +1,20 @@
 <template>
   <div>
     <h3>{{ projectTitle }}</h3>
-    <div @keyup.enter="createPost">
+    <div>
       <input type="text" v-model="newPost.title" />
       <input type="text" v-model="newPost.content" />
-      <!-- <button @click="createPost">提交新文章</button> -->
+      <button @click="createPost">提交新文章</button>
     </div>
     <div v-for="(post, index) in postsList" :key="index">
       <div>
         <small>{{ index + 1 }} - </small> {{ post.title }} --
         {{ post.content }} --- {{ post.user.name }}
+        <input
+          type="text"
+          :value="post.title"
+          @keyup.enter="updatePostTitle($event, post.id)"
+        />
       </div>
     </div>
     <div>{{ errorMessage }}</div>
@@ -25,7 +30,7 @@ export default {
       postsList: [],
       errorMessage: '',
       user: {
-        name: '张三',
+        name: 'yum',
         password: '123123',
       },
       token: '',
@@ -34,6 +39,26 @@ export default {
   },
 
   methods: {
+    async updatePostTitle(event, postId) {
+      try {
+        console.log(event.target.value);
+        console.log(postId);
+        await appPostsClient.patch(
+          `/posts/${postId}`,
+          {
+            title: event.target.value,
+          },
+          {
+            headers: { Authorization: `Bearer ${this.token}` },
+          },
+        );
+
+        this.getPost();
+      } catch (error) {
+        this.errorMessage = error.message;
+      }
+    },
+
     async getPost() {
       try {
         const response = await appPostsClient.get('/posts');
