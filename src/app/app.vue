@@ -15,6 +15,7 @@
           :value="post.title"
           @keyup.enter="updatePostTitle($event, post.id)"
         />
+        <button @click="deletePost(post.id)">删除</button>
       </div>
     </div>
     <div>{{ errorMessage }}</div>
@@ -39,6 +40,18 @@ export default {
   },
 
   methods: {
+    async deletePost(postId) {
+      try {
+        await appPostsClient.delete(`posts/${postId}`, {
+          headers: { Authorization: `Bearer ${this.token}` },
+        });
+
+        this.getPost();
+      } catch (error) {
+        this.errorMessage = error.message;
+      }
+    },
+
     async updatePostTitle(event, postId) {
       try {
         console.log(event.target.value);
