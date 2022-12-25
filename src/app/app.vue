@@ -6,6 +6,9 @@
       @loginSuccess="onLoginSuccess"
       @loginError="onLoginError"
     />
+    <div v-if="currentUser ? true : false">
+      当前用户：{{ currentUser.name }}
+    </div>
     <div v-if="isLoggedIn">
       <input type="text" v-model="newPost.title" placeholder="请输入标题" />
       <input type="text" v-model="newPost.content" placeholder="请输入内容" />
@@ -36,6 +39,7 @@ export default {
       projectTitle: 'Vue.js 前端应用 #10：身份验证',
       postsList: [],
       errorMessage: '',
+      currentUser: null,
       // user: {
       //   name: 'yum',
       //   password: '123123',
@@ -55,7 +59,18 @@ export default {
   },
 
   methods: {
+    async getCurrentUser(userId) {
+      try {
+        const response = await appPostsClient.get(`/users/${userId}`);
+
+        this.currentUser = response.data;
+      } catch (error) {
+        this.errorMessage = error.message;
+      }
+    },
+
     onLoginSuccess(data) {
+      this.getCurrentUser(data.id);
       this.token = data.token;
     },
 
