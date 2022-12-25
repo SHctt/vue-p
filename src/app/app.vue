@@ -1,6 +1,7 @@
 <template>
   <div>
     <h3>{{ projectTitle }}</h3>
+    <userLogin />
     <div>
       <input type="text" v-model="newPost.title" />
       <input type="text" v-model="newPost.content" />
@@ -19,7 +20,6 @@
       </div>
     </div>
     <div>{{ errorMessage }}</div>
-    <userLogin />
   </div>
 </template>
 
@@ -32,10 +32,10 @@ export default {
       projectTitle: 'Vue.js 前端应用 #10：身份验证',
       postsList: [],
       errorMessage: '',
-      user: {
-        name: 'yum',
-        password: '123123',
-      },
+      // user: {
+      //   name: 'yum',
+      //   password: '123123',
+      // },
       token: '',
       newPost: { title: '', content: '' },
     };
@@ -108,15 +108,6 @@ export default {
   async created() {
     // 初始化列表
     this.getPost();
-
-    //login的post请求
-    try {
-      const response = await appPostsClient.post('/login', this.user);
-      this.token = response.data.token;
-      console.log(response.data);
-    } catch (error) {
-      this.errorMessage = error.message;
-    }
   },
 
   components: {

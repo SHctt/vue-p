@@ -7,6 +7,7 @@
 </template>
 
 <script>
+import { appPostsClient } from '@/app/app.service';
 export default {
   data() {
     return {
@@ -17,7 +18,17 @@ export default {
 
   methods: {
     async login() {
-      console.log(this.name, this.password);
+      //login的post请求
+      try {
+        const response = await appPostsClient.post('/login', {
+          name: this.name,
+          password: this.password,
+        });
+        this.token = response.data.token;
+        console.log(response.data);
+      } catch (error) {
+        this.errorMessage = error.message;
+      }
     },
   },
 };
