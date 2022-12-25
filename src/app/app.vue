@@ -19,11 +19,13 @@
       </div>
     </div>
     <div>{{ errorMessage }}</div>
+    <userLogin />
   </div>
 </template>
 
 <script>
 import { appPostsClient } from '@/app/app.service';
+import userLogin from '@/user/component/user-login.vue';
 export default {
   data() {
     return {
@@ -115,6 +117,10 @@ export default {
     } catch (error) {
       this.errorMessage = error.message;
     }
+  },
+
+  components: {
+    userLogin,
   },
 };
 </script>
