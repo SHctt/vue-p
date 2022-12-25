@@ -37,7 +37,7 @@ import UserLogin from '@/user/component/user-login.vue';
 export default {
   data() {
     return {
-      projectTitle: 'Vue.js 前端应用 #10：身份验证',
+      projectTitle: 'Vue.js 前端应用 #11：上传文件',
       postsList: [],
       errorMessage: '',
       currentUser: null,
