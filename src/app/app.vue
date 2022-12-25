@@ -1,10 +1,14 @@
 <template>
   <div>
     <h3>{{ projectTitle }}</h3>
-    <userLogin />
-    <div>
-      <input type="text" v-model="newPost.title" />
-      <input type="text" v-model="newPost.content" />
+    <userLogin
+      v-if="!isLoggedIn"
+      @loginSuccess="onLoginSuccess"
+      @loginError="onLoginError"
+    />
+    <div v-if="isLoggedIn">
+      <input type="text" v-model="newPost.title" placeholder="请输入标题" />
+      <input type="text" v-model="newPost.content" placeholder="请输入内容" />
       <button @click="createPost">提交新文章</button>
     </div>
     <div v-for="(post, index) in postsList" :key="index">
@@ -19,7 +23,7 @@
         <button @click="deletePost(post.id)">删除</button>
       </div>
     </div>
-    <div>{{ errorMessage }}</div>
+    <div v-if="showError">{{ errorMessage }}</div>
   </div>
 </template>
 
@@ -41,7 +45,24 @@ export default {
     };
   },
 
+  computed: {
+    isLoggedIn() {
+      return this.token ? true : false;
+    },
+    showError() {
+      return this.errorMessage ? true : false;
+    },
+  },
+
   methods: {
+    onLoginSuccess(data) {
+      this.token = data.token;
+    },
+
+    onLoginError(error) {
+      this.errorMessage = error.data.message;
+    },
+
     async deletePost(postId) {
       try {
         await appPostsClient.delete(`posts/${postId}`, {

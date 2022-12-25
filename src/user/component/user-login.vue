@@ -18,16 +18,23 @@ export default {
 
   methods: {
     async login() {
+      console.log(this.name, this.password);
+
       //login的post请求
       try {
         const response = await appPostsClient.post('/login', {
           name: this.name,
           password: this.password,
         });
-        this.token = response.data.token;
         console.log(response.data);
+
+        // 登陆成功事件
+        this.$emit('loginSuccess', response.data);
       } catch (error) {
         this.errorMessage = error.message;
+
+        // 登陆失败事件
+        this.$emit('loginError', error.response);
       }
     },
   },
