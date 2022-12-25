@@ -1,7 +1,7 @@
 <template>
   <div>
     <h3>{{ projectTitle }}</h3>
-    <userLogin
+    <UserLogin
       v-if="!isLoggedIn"
       @loginSuccess="onLoginSuccess"
       @loginError="onLoginError"
@@ -32,7 +32,7 @@
 
 <script>
 import { appPostsClient } from '@/app/app.service';
-import userLogin from '@/user/component/user-login.vue';
+import UserLogin from '@/user/component/user-login.vue';
 export default {
   data() {
     return {
@@ -72,6 +72,10 @@ export default {
     onLoginSuccess(data) {
       this.getCurrentUser(data.id);
       this.token = data.token;
+
+      // 将当前用户信息存储到本地
+      localStorage.setItem('tid', data.token);
+      localStorage.setItem('uid', data.id);
     },
 
     onLoginError(error) {
@@ -144,10 +148,21 @@ export default {
   async created() {
     // 初始化列表
     this.getPost();
+
+    // 查询浏览器本地存储中的用户数据
+    const tid = localStorage.getItem('tid');
+    const uid = localStorage.getItem('uid');
+
+    if (tid) {
+      this.token = tid;
+    }
+    if (uid) {
+      this.getCurrentUser(uid);
+    }
   },
 
   components: {
-    userLogin,
+    UserLogin,
   },
 };
 </script>
