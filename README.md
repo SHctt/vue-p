@@ -17,3 +17,7 @@
 使用 localStorage 的 setItem 方法，将登陆成功的数据存储到浏览器的本地存储
 
 使用 localStorage 的 getItem 方法，在创建组件后，读取本地存储中的用户数据
+
+## 10.6 退出登录
+
+使用 localStorage 的 removeItem 方法，在退出登陆后，移除本地存储的用户数据

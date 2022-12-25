@@ -8,6 +8,7 @@
     />
     <div v-if="currentUser ? true : false">
       当前用户：{{ currentUser.name }}
+      <button @click="logOut">退出登陆</button>
     </div>
     <div v-if="isLoggedIn">
       <input type="text" v-model="newPost.title" placeholder="请输入标题" />
@@ -59,6 +60,15 @@ export default {
   },
 
   methods: {
+    logOut() {
+      this.token = '';
+      this.currentUser = null;
+
+      // 移除本地的登陆数据
+      localStorage.removeItem('tid');
+      localStorage.removeItem('uid');
+    },
+
     async getCurrentUser(userId) {
       try {
         const response = await appPostsClient.get(`/users/${userId}`);
