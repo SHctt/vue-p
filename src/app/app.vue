@@ -16,9 +16,12 @@
       <input
         type="file"
         @change="onFileChange"
-        accept="image/png,image.jpg,image/jpeg"
+        accept="image/png,image/jpg,image/jpeg"
       />
       <button @click="createPost">提交新文章</button>
+    </div>
+    <div v-if="imagePreviewURL ? true : false">
+      <img :src="imagePreviewURL" alt="file.name" class="image-preview" />
     </div>
     <div v-for="(post, index) in postsList" :key="index">
       <div>
@@ -53,6 +56,7 @@ export default {
       token: '',
       newPost: { title: '', content: '' },
       file: null,
+      imagePreviewURL: null,
     };
   },
 
@@ -66,6 +70,16 @@ export default {
   },
 
   methods: {
+    createImagePreview(file) {
+      const reader = new FileReader();
+
+      reader.readAsDataURL(file);
+
+      reader.onload = (event) => {
+        this.imagePreviewURL = event.target.result;
+      };
+    },
+
     onFileChange(event) {
       console.log(event.target.files);
 
@@ -74,8 +88,10 @@ export default {
       if (file) {
         this.file = file;
 
-        // 以'.'为分界，使用split将文件名分为两个部分，使用文件名的第一部分作为文章标题
         this.newPost.title = file.name.split('.')[0];
+
+        // 生成缩略图
+        this.createImagePreview(file);
       }
     },
 
