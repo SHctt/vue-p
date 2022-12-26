@@ -13,6 +13,11 @@
     <div v-if="isLoggedIn">
       <input type="text" v-model="newPost.title" placeholder="请输入标题" />
       <input type="text" v-model="newPost.content" placeholder="请输入内容" />
+      <input
+        type="file"
+        @change="onFileChange"
+        accept="image/png,image.jpg,image/jpeg"
+      />
       <button @click="createPost">提交新文章</button>
     </div>
     <div v-for="(post, index) in postsList" :key="index">
@@ -47,6 +52,7 @@ export default {
       // },
       token: '',
       newPost: { title: '', content: '' },
+      file: null,
     };
   },
 
@@ -60,6 +66,19 @@ export default {
   },
 
   methods: {
+    onFileChange(event) {
+      console.log(event.target.files);
+
+      const file = event.target.files[0];
+
+      if (file) {
+        this.file = file;
+
+        // 以'.'为分界，使用split将文件名分为两个部分，使用文件名的第一部分作为文章标题
+        this.newPost.title = file.name.split('.')[0];
+      }
+    },
+
     logOut() {
       this.token = '';
       this.currentUser = null;
