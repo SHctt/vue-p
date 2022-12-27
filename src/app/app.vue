@@ -15,6 +15,7 @@
       <input type="text" v-model="newPost.content" placeholder="请输入内容" />
       <input
         type="file"
+        ref="file"
         @change="onFileChange"
         accept="image/png,image/jpg,image/jpeg"
       />
@@ -49,10 +50,6 @@ export default {
       postsList: [],
       errorMessage: '',
       currentUser: null,
-      // user: {
-      //   name: 'yum',
-      //   password: '123123',
-      // },
       token: '',
       newPost: { title: '', content: '' },
       file: null,
@@ -70,6 +67,37 @@ export default {
   },
 
   methods: {
+    async creatFile(file, postId) {
+      // 创建表单
+      const formData = new FormData();
+
+      // 添加字段
+      formData.append('file', file);
+
+      try {
+        // 执行上传
+        const response = await appPostsClient.post(
+          `/files?post=${postId}`,
+          formData,
+          {
+            headers: {
+              Authorization: `Bearer ${this.token}`,
+            },
+          },
+        );
+
+        // 清理
+        this.file = null;
+        this.imagePreviewURL = null;
+        // 使用$refs前，需要先在字段上注册ref的值等于file
+        this.$refs.file.value = '';
+
+        console.log(response.data);
+      } catch (error) {
+        this.errorMessage = error.message;
+      }
+    },
+
     createImagePreview(file) {
       const reader = new FileReader();
 
@@ -179,6 +207,11 @@ export default {
         });
         if (response) {
           console.log(response.data);
+
+          // 上传文件
+          if (this.file) {
+            this.creatFile(this.file, response.data.insertId);
+          }
           // 重置表单
           this.newPost = {};
           // 立刻更新列表
