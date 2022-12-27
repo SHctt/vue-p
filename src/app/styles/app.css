@@ -30,3 +30,8 @@ label {
   align-items: center;
   justify-content: center;
 }
+
+.drag-zone.active {
+  background: #83c7f7;
+  color: #1790e9;
+}

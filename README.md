@@ -19,3 +19,5 @@
 创建绑定 dragover.prevent 和 drop.prevent 事件的 div 元素，将浏览器默认的拖拽文件效果改变
 
 然后为 drop.prevent 绑定一个上传文件的事件
+
+## 11.6 切换拖放文件时的激活状态

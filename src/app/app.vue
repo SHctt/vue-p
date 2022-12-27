@@ -21,7 +21,13 @@
       />
       <button @click="createPost">提交新文章</button>
     </div>
-    <div class="drag-zone" @dragover.prevent @drop.prevent="onDropDragZone">
+    <div
+      :class="['drag-zone', { active: dragZoneActive }]"
+      @dragenter="dragZoneActive = true"
+      @dragleave="dragZoneActive = false"
+      @dragover.prevent
+      @drop.prevent="onDropDragZone"
+    >
       <div>拖放文件到这里上传</div>
     </div>
     <div
@@ -64,6 +70,7 @@ export default {
       file: null,
       imagePreviewURL: null,
       imageUploadProgress: null,
+      dragZoneActive: false,
     };
   },
 
@@ -79,6 +86,8 @@ export default {
   methods: {
     onDropDragZone(event) {
       console.log(event.dataTransfer.files);
+
+      this.dragZoneActive = false;
 
       const file = event.dataTransfer.files[0];
 
