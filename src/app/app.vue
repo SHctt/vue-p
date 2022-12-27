@@ -21,6 +21,12 @@
       />
       <button @click="createPost">提交新文章</button>
     </div>
+    <div
+      class="image-upload-progress"
+      v-if="imageUploadProgress ? true : false"
+    >
+      {{ imageUploadProgress + '%' }}
+    </div>
     <div v-if="imagePreviewURL ? true : false">
       <img :src="imagePreviewURL" alt="file.name" class="image-preview" />
     </div>
@@ -54,6 +60,7 @@ export default {
       newPost: { title: '', content: '' },
       file: null,
       imagePreviewURL: null,
+      imageUploadProgress: null,
     };
   },
 
@@ -83,6 +90,14 @@ export default {
             headers: {
               Authorization: `Bearer ${this.token}`,
             },
+            onUploadProgress: (event) => {
+              // 显示上传事件信息
+              console.log(event);
+
+              const { loaded, total } = event;
+
+              this.imageUploadProgress = Math.round((loaded * 100) / total);
+            },
           },
         );
 
@@ -91,6 +106,9 @@ export default {
         this.imagePreviewURL = null;
         // 使用$refs前，需要先在字段上注册ref的值等于file
         this.$refs.file.value = '';
+
+        // 重置上传进度数据
+        this.imageUploadProgress = '';
 
         console.log(response.data);
       } catch (error) {

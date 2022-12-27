@@ -14,3 +14,8 @@ label {
 .image-preview {
   max-width: 350px;
 }
+
+.image-upload-progress {
+  font-size: 32px;
+  font-weight: 300;
+}
