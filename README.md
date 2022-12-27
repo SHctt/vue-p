@@ -13,3 +13,9 @@
 ## 11.4 显示文件上传进度
 
 一开始写错了 onUploadProgress 这个属性
+
+## 11.5 使用拖拽的方式选择要上传的文件（dragover, drop）
+
+创建绑定 dragover.prevent 和 drop.prevent 事件的 div 元素，将浏览器默认的拖拽文件效果改变
+
+然后为 drop.prevent 绑定一个上传文件的事件

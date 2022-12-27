@@ -21,6 +21,9 @@
       />
       <button @click="createPost">提交新文章</button>
     </div>
+    <div class="drag-zone" @dragover.prevent @drop.prevent="onDropDragZone">
+      <div>拖放文件到这里上传</div>
+    </div>
     <div
       class="image-upload-progress"
       v-if="imageUploadProgress ? true : false"
@@ -74,6 +77,20 @@ export default {
   },
 
   methods: {
+    onDropDragZone(event) {
+      console.log(event.dataTransfer.files);
+
+      const file = event.dataTransfer.files[0];
+
+      if (file) {
+        this.file = file;
+
+        this.newPost.title = file.name.split('.')[0];
+
+        this.createImagePreview(file);
+      }
+    },
+
     async creatFile(file, postId) {
       // 创建表单
       const formData = new FormData();
