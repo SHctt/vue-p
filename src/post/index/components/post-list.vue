@@ -1,14 +1,12 @@
 <template>
-  <post-list></post-list>
+  <post-list-item></post-list-item>
 </template>
 
 <script>
 import { defineComponent } from 'vue';
-import postList from './components/post-list.vue';
+import postListItem from './post-list-item.vue';
 
 export default defineComponent({
-  components: {
-    postList,
-  },
+  components: { postListItem },
 });
 </script>
