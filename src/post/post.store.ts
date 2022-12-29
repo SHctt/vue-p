@@ -5,6 +5,7 @@ import {
   PostCreateStoreState,
 } from './create/post-create.store';
 import { postIndexStoreModule } from './index/post-index.store';
+import { postShowStoreModule } from './show/post-show.store';
 
 // 导出并申明state的类型
 export interface PostStoreState {
@@ -24,5 +25,6 @@ export const postStoreModule: Module<PostStoreState, RootState> = {
   modules: {
     create: postCreateStoreModule, //使用create命名导入的store模块
     index: postIndexStoreModule, //使用index命名导入的store模块
+    show: postShowStoreModule,
   },
 };
