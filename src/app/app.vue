@@ -1,6 +1,13 @@
 <template>
   <div>
     <h3>{{ proTitle }}</h3>
+    <div>
+      <router-link :to="{ name: 'home' }">home |</router-link>
+      <router-link :to="{ name: 'postsIndex' }"> posts</router-link>
+    </div>
+    <div>
+      <router-view></router-view>
+    </div>
   </div>
 </template>
 
