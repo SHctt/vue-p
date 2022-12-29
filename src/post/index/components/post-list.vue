@@ -1,4 +1,5 @@
 <template>
+  <div v-if="loading">加载中...</div>
   <post-list-item
     v-for="post in posts"
     :item="post"
@@ -9,19 +10,24 @@
 <script>
 import { defineComponent } from 'vue';
 import postListItem from './post-list-item.vue';
-import { appHttpClient } from '@/app/app.service';
+import { mapActions, mapGetters } from 'vuex';
 
 export default defineComponent({
-  data() {
-    return {
-      posts: [],
-    };
+  async created() {
+    this.getPosts();
   },
 
-  async created() {
-    const response = await appHttpClient.get('/posts');
+  computed: {
+    ...mapGetters({
+      loading: 'post/index/loading',
+      posts: 'post/index/posts',
+    }),
+  },
 
-    this.posts = response.data;
+  methods: {
+    ...mapActions({
+      getPosts: 'post/index/getPosts',
+    }),
   },
 
   components: { postListItem },
