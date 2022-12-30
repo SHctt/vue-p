@@ -25,11 +25,10 @@ const setTitle = (vm: ComponentPublicInstance) => {
 
 // titleMixin
 export const titleMixin: ComponentOptions = {
-  created() {
-    setTitle(this);
-  },
-
-  updated() {
-    setTitle(this);
-  },
+  // created() {
+  //   setTitle(this);
+  // },
+  // updated() {
+  //   setTitle(this);
+  // },
 };
