@@ -11,6 +11,12 @@ import { defineComponent } from 'vue';
 import { mapActions, mapGetters } from 'vuex';
 
 export default defineComponent({
+  title() {
+    if (this.showPost) {
+      return this.post.title;
+    }
+  },
+
   props: {
     postId: String,
   },

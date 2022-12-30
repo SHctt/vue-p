@@ -39,3 +39,10 @@
 ## 12.10 内容页面：定义 Store 模块
 
 ## 12.11 内容页面：定义路由与组件
+
+## 12.12 Mixin：制作一个设置页面标题的混合
+
+mixin，就是混合。混合可以混到组件里一些功能，全局混合可以混合到应用的所有组件里。
+创建一个混合，用它设置页面的标题。
+
+`这里的练习中，提示created和updated方法不被支持，官网不支持使用mixin方法https://cn.vuejs.org/api/application.html#app-mixin`
